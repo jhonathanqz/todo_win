@@ -51,37 +51,37 @@ void setupUseCase() {
     ),
   );
 
-  sl.registerFactory<UpdateTasksUseCase>(
+  sl.registerLazySingleton<UpdateTasksUseCase>(
     () => UpdateTasksUseCase(
       settingsRepository: sl<SettingsRepository>(),
     ),
   );
 
-  sl.registerFactory<DeleteTaskUseCase>(
+  sl.registerLazySingleton<DeleteTaskUseCase>(
     () => DeleteTaskUseCase(
       settingsRepository: sl<SettingsRepository>(),
     ),
   );
 
-  sl.registerFactory<DeleteTasksFromCollectionUseCase>(
+  sl.registerLazySingleton<DeleteTasksFromCollectionUseCase>(
     () => DeleteTasksFromCollectionUseCase(
       settingsRepository: sl<SettingsRepository>(),
     ),
   );
 
-  sl.registerFactory<DeleteCollectionUseCase>(
+  sl.registerLazySingleton<DeleteCollectionUseCase>(
     () => DeleteCollectionUseCase(
       settingsRepository: sl<SettingsRepository>(),
     ),
   );
 
-  sl.registerFactory<GetCollectionsUseCase>(
+  sl.registerLazySingleton<GetCollectionsUseCase>(
     () => GetCollectionsUseCase(
       settingsRepository: sl<SettingsRepository>(),
     ),
   );
 
-  sl.registerFactory<SetCollectionsUseCase>(
+  sl.registerLazySingleton<SetCollectionsUseCase>(
     () => SetCollectionsUseCase(
       settingsRepository: sl<SettingsRepository>(),
     ),
