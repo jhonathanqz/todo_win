@@ -3,14 +3,14 @@ class Tasks {
   final String description;
   final bool isArchived;
   final bool isCompleted;
-  final String collectionName;
+  final int collectionId;
 
   Tasks({
     this.id = 0,
     this.description = '',
     this.isArchived = false,
     this.isCompleted = false,
-    this.collectionName = '',
+    this.collectionId = 0,
   });
 
   Tasks copyWith({
@@ -18,13 +18,13 @@ class Tasks {
     String? description,
     bool? isArchived,
     bool? isCompleted,
-    String? collectionName,
+    int? collectionId,
   }) =>
       Tasks(
         id: id ?? this.id,
         description: description ?? this.description,
         isArchived: isArchived ?? this.isArchived,
         isCompleted: isCompleted ?? this.isCompleted,
-        collectionName: collectionName ?? this.collectionName,
+        collectionId: collectionId ?? this.collectionId,
       );
 }

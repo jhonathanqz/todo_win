@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
+import 'package:todo_win/app/injection_container.dart';
 import 'package:todo_win/app/name_route.dart';
+import 'package:todo_win/presentation/features/settings/mobx/settings.store.dart';
 import 'package:todo_win/utils/cool_navigate.dart';
 
 part 'splash.store.g.dart';
@@ -13,6 +15,10 @@ abstract class SplashBase with Store {
     await Future.delayed(
       const Duration(seconds: 4),
     );
+
+    try {
+      await sl<SettingsStore>().getCollections();
+    } catch (_) {}
 
     coolNavigate.removeUntil(NameRoute.home);
   }

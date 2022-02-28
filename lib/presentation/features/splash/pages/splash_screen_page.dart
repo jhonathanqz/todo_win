@@ -39,10 +39,14 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
     return Container(
       height: Layout.getSize(context).height,
       width: Layout.getSize(context).width,
-      decoration: const BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage(AppImages.backgroundSplash),
-          fit: BoxFit.cover,
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topRight,
+          end: Alignment.bottomLeft,
+          colors: [
+            Colors.blue[900]!,
+            Colors.green,
+          ],
         ),
       ),
       child: Column(

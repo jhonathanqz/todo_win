@@ -9,7 +9,6 @@ class ListToDoModel {
 
   ListToDoModel({
     this.listTodo,
-
   });
 
   factory ListToDoModel.fromJson(Map<String, dynamic> json) =>

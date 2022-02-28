@@ -5,7 +5,6 @@ import 'package:todo_win/presentation/shared/style/app_text_styles.dart';
 import 'package:todo_win/presentation/shared/widgets/loading/color_loader.dart';
 import 'package:todo_win/utils/layout.dart';
 
-
 class Loading extends StatelessWidget {
   final bool isLoading;
   final Widget child;

@@ -12,7 +12,7 @@ ToDoSettingsModel _$ToDoSettingsModelFromJson(Map<String, dynamic> json) {
     description: json['description'] as String,
     archived: json['archived'] as int,
     completed: json['completed'] as int,
-    collectionName: json['collectionName'] as String,
+    collectionId: json['collectionId'] as int,
   );
 }
 
@@ -22,5 +22,5 @@ Map<String, dynamic> _$ToDoSettingsModelToJson(ToDoSettingsModel instance) =>
       'description': instance.description,
       'archived': instance.archived,
       'completed': instance.completed,
-      'collectionName': instance.collectionName,
+      'collectionId': instance.collectionId,
     };

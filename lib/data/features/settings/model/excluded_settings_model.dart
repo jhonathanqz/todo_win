@@ -8,14 +8,14 @@ class ExcludedSettingsModel {
   final String description;
   final int archived;
   final int completed;
-  final String collectionName;
+  final int collectionId;
 
   ExcludedSettingsModel({
     this.id,
     required this.description,
     required this.archived,
     required this.completed,
-    required this.collectionName,
+    required this.collectionId,
   });
 
   factory ExcludedSettingsModel.fromJson(Map<String, dynamic> json) =>
