@@ -39,6 +39,116 @@ mixin _$SettingsStore on SettingsBase, Store {
     });
   }
 
+  final _$selectedCollectionAtom =
+      Atom(name: 'SettingsBase.selectedCollection');
+
+  @override
+  Collection? get selectedCollection {
+    _$selectedCollectionAtom.reportRead();
+    return super.selectedCollection;
+  }
+
+  @override
+  set selectedCollection(Collection? value) {
+    _$selectedCollectionAtom.reportWrite(value, super.selectedCollection, () {
+      super.selectedCollection = value;
+    });
+  }
+
+  final _$listCollectionAtom = Atom(name: 'SettingsBase.listCollection');
+
+  @override
+  List<Collection> get listCollection {
+    _$listCollectionAtom.reportRead();
+    return super.listCollection;
+  }
+
+  @override
+  set listCollection(List<Collection> value) {
+    _$listCollectionAtom.reportWrite(value, super.listCollection, () {
+      super.listCollection = value;
+    });
+  }
+
+  final _$createCollectionNameAtom =
+      Atom(name: 'SettingsBase.createCollectionName');
+
+  @override
+  String get createCollectionName {
+    _$createCollectionNameAtom.reportRead();
+    return super.createCollectionName;
+  }
+
+  @override
+  set createCollectionName(String value) {
+    _$createCollectionNameAtom.reportWrite(value, super.createCollectionName,
+        () {
+      super.createCollectionName = value;
+    });
+  }
+
+  final _$selectedTasksAtom = Atom(name: 'SettingsBase.selectedTasks');
+
+  @override
+  Tasks? get selectedTasks {
+    _$selectedTasksAtom.reportRead();
+    return super.selectedTasks;
+  }
+
+  @override
+  set selectedTasks(Tasks? value) {
+    _$selectedTasksAtom.reportWrite(value, super.selectedTasks, () {
+      super.selectedTasks = value;
+    });
+  }
+
+  final _$listTasksAtom = Atom(name: 'SettingsBase.listTasks');
+
+  @override
+  List<Tasks> get listTasks {
+    _$listTasksAtom.reportRead();
+    return super.listTasks;
+  }
+
+  @override
+  set listTasks(List<Tasks> value) {
+    _$listTasksAtom.reportWrite(value, super.listTasks, () {
+      super.listTasks = value;
+    });
+  }
+
+  final _$listTasksArchivedAtom = Atom(name: 'SettingsBase.listTasksArchived');
+
+  @override
+  List<Tasks> get listTasksArchived {
+    _$listTasksArchivedAtom.reportRead();
+    return super.listTasksArchived;
+  }
+
+  @override
+  set listTasksArchived(List<Tasks> value) {
+    _$listTasksArchivedAtom.reportWrite(value, super.listTasksArchived, () {
+      super.listTasksArchived = value;
+    });
+  }
+
+  final _$listTasksNotArchivedAtom =
+      Atom(name: 'SettingsBase.listTasksNotArchived');
+
+  @override
+  List<Tasks> get listTasksNotArchived {
+    _$listTasksNotArchivedAtom.reportRead();
+    return super.listTasksNotArchived;
+  }
+
+  @override
+  set listTasksNotArchived(List<Tasks> value) {
+    _$listTasksNotArchivedAtom.reportWrite(value, super.listTasksNotArchived,
+        () {
+      super.listTasksNotArchived = value;
+    });
+  }
+
   final _$errorAtom = Atom(name: 'SettingsBase.error');
 
   @override
@@ -54,25 +164,25 @@ mixin _$SettingsStore on SettingsBase, Store {
     });
   }
 
-  final _$isLoggedAutoAtom = Atom(name: 'SettingsBase.isLoggedAuto');
+  final _$isArchiveListAtom = Atom(name: 'SettingsBase.isArchiveList');
 
   @override
-  bool get isLoggedAuto {
-    _$isLoggedAutoAtom.reportRead();
-    return super.isLoggedAuto;
+  bool get isArchiveList {
+    _$isArchiveListAtom.reportRead();
+    return super.isArchiveList;
   }
 
   @override
-  set isLoggedAuto(bool value) {
-    _$isLoggedAutoAtom.reportWrite(value, super.isLoggedAuto, () {
-      super.isLoggedAuto = value;
+  set isArchiveList(bool value) {
+    _$isArchiveListAtom.reportWrite(value, super.isArchiveList, () {
+      super.isArchiveList = value;
     });
   }
 
   final _$getTasksAsyncAction = AsyncAction('SettingsBase.getTasks');
 
   @override
-  Future<Tasks> getTasks() {
+  Future<List<Tasks>> getTasks() {
     return _$getTasksAsyncAction.run(() => super.getTasks());
   }
 
@@ -86,13 +196,167 @@ mixin _$SettingsStore on SettingsBase, Store {
         () => super.setTasks(context: context, callbackSucess: callbackSucess));
   }
 
+  final _$updateTasksAsyncAction = AsyncAction('SettingsBase.updateTasks');
+
+  @override
+  Future<void> updateTasks(
+      {required BuildContext context,
+      required dynamic Function() callBackSucess}) {
+    return _$updateTasksAsyncAction.run(() =>
+        super.updateTasks(context: context, callBackSucess: callBackSucess));
+  }
+
+  final _$deleteTaskAsyncAction = AsyncAction('SettingsBase.deleteTask');
+
+  @override
+  Future<void> deleteTask(
+      {required BuildContext context, required int taskId}) {
+    return _$deleteTaskAsyncAction
+        .run(() => super.deleteTask(context: context, taskId: taskId));
+  }
+
+  final _$deleteTaskFromCollectionAsyncAction =
+      AsyncAction('SettingsBase.deleteTaskFromCollection');
+
+  @override
+  Future<void> deleteTaskFromCollection({required BuildContext context}) {
+    return _$deleteTaskFromCollectionAsyncAction
+        .run(() => super.deleteTaskFromCollection(context: context));
+  }
+
+  final _$deleteCollectionAsyncAction =
+      AsyncAction('SettingsBase.deleteCollection');
+
+  @override
+  Future<void> deleteCollection(
+      {required BuildContext context,
+      required int collectionId,
+      required dynamic Function() callBackSucess}) {
+    return _$deleteCollectionAsyncAction.run(() => super.deleteCollection(
+        context: context,
+        collectionId: collectionId,
+        callBackSucess: callBackSucess));
+  }
+
+  final _$archiveTasksAsyncAction = AsyncAction('SettingsBase.archiveTasks');
+
+  @override
+  Future<void> archiveTasks({required BuildContext context}) {
+    return _$archiveTasksAsyncAction
+        .run(() => super.archiveTasks(context: context));
+  }
+
+  final _$getCollectionsAsyncAction =
+      AsyncAction('SettingsBase.getCollections');
+
+  @override
+  Future<List<Collection>> getCollections() {
+    return _$getCollectionsAsyncAction.run(() => super.getCollections());
+  }
+
+  final _$setCollectionAsyncAction = AsyncAction('SettingsBase.setCollection');
+
+  @override
+  Future<void> setCollection(
+      {required BuildContext context,
+      required dynamic Function() callbackSucess}) {
+    return _$setCollectionAsyncAction.run(() =>
+        super.setCollection(context: context, callbackSucess: callbackSucess));
+  }
+
+  final _$SettingsBaseActionController = ActionController(name: 'SettingsBase');
+
+  @override
+  void setIsArchiveList(bool value) {
+    final _$actionInfo = _$SettingsBaseActionController.startAction(
+        name: 'SettingsBase.setIsArchiveList');
+    try {
+      return super.setIsArchiveList(value);
+    } finally {
+      _$SettingsBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void isCompletedUpdate(bool value) {
+    final _$actionInfo = _$SettingsBaseActionController.startAction(
+        name: 'SettingsBase.isCompletedUpdate');
+    try {
+      return super.isCompletedUpdate(value);
+    } finally {
+      _$SettingsBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void editDescriptionTask(String value) {
+    final _$actionInfo = _$SettingsBaseActionController.startAction(
+        name: 'SettingsBase.editDescriptionTask');
+    try {
+      return super.editDescriptionTask(value);
+    } finally {
+      _$SettingsBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setDescriptionTask(String value) {
+    final _$actionInfo = _$SettingsBaseActionController.startAction(
+        name: 'SettingsBase.setDescriptionTask');
+    try {
+      return super.setDescriptionTask(value);
+    } finally {
+      _$SettingsBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setCollectionName(String value) {
+    final _$actionInfo = _$SettingsBaseActionController.startAction(
+        name: 'SettingsBase.setCollectionName');
+    try {
+      return super.setCollectionName(value);
+    } finally {
+      _$SettingsBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void wipeSelectedTask() {
+    final _$actionInfo = _$SettingsBaseActionController.startAction(
+        name: 'SettingsBase.wipeSelectedTask');
+    try {
+      return super.wipeSelectedTask();
+    } finally {
+      _$SettingsBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void wipeListTasks() {
+    final _$actionInfo = _$SettingsBaseActionController.startAction(
+        name: 'SettingsBase.wipeListTasks');
+    try {
+      return super.wipeListTasks();
+    } finally {
+      _$SettingsBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
   @override
   String toString() {
     return '''
 isLoading: ${isLoading},
 tasks: ${tasks},
+selectedCollection: ${selectedCollection},
+listCollection: ${listCollection},
+createCollectionName: ${createCollectionName},
+selectedTasks: ${selectedTasks},
+listTasks: ${listTasks},
+listTasksArchived: ${listTasksArchived},
+listTasksNotArchived: ${listTasksNotArchived},
 error: ${error},
-isLoggedAuto: ${isLoggedAuto}
+isArchiveList: ${isArchiveList}
     ''';
   }
 }

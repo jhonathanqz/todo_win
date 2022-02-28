@@ -13,7 +13,7 @@ ExcludedSettingsModel _$ExcludedSettingsModelFromJson(
     description: json['description'] as String,
     archived: json['archived'] as int,
     completed: json['completed'] as int,
-    collectionName: json['collectionName'] as String,
+    collectionId: json['collectionId'] as int,
   );
 }
 
@@ -24,5 +24,5 @@ Map<String, dynamic> _$ExcludedSettingsModelToJson(
       'description': instance.description,
       'archived': instance.archived,
       'completed': instance.completed,
-      'collectionName': instance.collectionName,
+      'collectionId': instance.collectionId,
     };

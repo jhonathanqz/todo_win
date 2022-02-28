@@ -6,9 +6,9 @@ class GetTasksUseCase {
 
   GetTasksUseCase({required this.settingsRepository});
 
-  Future<Tasks> call() async {
+  Future<List<Tasks>> call(int collectionId) async {
     try {
-      return await settingsRepository.getTasks();
+      return await settingsRepository.getTasks(collectionId);
     } catch (_) {
       rethrow;
     }

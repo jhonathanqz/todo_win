@@ -3,7 +3,6 @@ import 'package:flutter/services.dart';
 import 'package:todo_win/app/app.dart';
 import 'package:todo_win/app/injection_container.dart';
 
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   //await Firebase.initializeApp();

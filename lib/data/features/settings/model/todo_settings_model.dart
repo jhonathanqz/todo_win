@@ -8,14 +8,14 @@ class ToDoSettingsModel {
   final String description;
   final int archived;
   final int completed;
-  final String collectionName;
+  final int collectionId;
 
   ToDoSettingsModel({
     this.id,
     required this.description,
     required this.archived,
     required this.completed,
-    required this.collectionName,
+    required this.collectionId,
   });
 
   factory ToDoSettingsModel.fromJson(Map<String, dynamic> json) =>
