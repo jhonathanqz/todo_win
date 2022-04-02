@@ -24,9 +24,9 @@ class _HomePageState extends State<HomePage> {
   late SettingsStore settingsStore;
 
   @override
-  void initState() {
+  void didChangeDependencies() {
     settingsStore = sl<SettingsStore>();
-    super.initState();
+    super.didChangeDependencies();
   }
 
   @override
@@ -53,16 +53,24 @@ class _HomePageState extends State<HomePage> {
               children: const [
                 Icon(
                   Icons.add,
+                  color: AppColors.black,
+                  size: 27,
                 ),
                 AppSpacing.minW,
-                Text('Nova Lista'),
+                Text(
+                  'Nova Lista',
+                  style: TextStyle(
+                    color: AppColors.black,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
               ],
             ),
           ),
           child: SizedBox(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Visibility(
                   visible: settingsStore.listCollection.isNotEmpty,
@@ -71,7 +79,9 @@ class _HomePageState extends State<HomePage> {
                     child: HeaderCollection(),
                   ),
                 ),
-                const ListCollections(),
+                const Expanded(
+                  child: ListCollections(),
+                ),
               ],
             ),
           ),

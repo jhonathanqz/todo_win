@@ -35,6 +35,7 @@ class _TasksPageState extends State<TasksPage> {
 
   @override
   void didChangeDependencies() async {
+    settingsStore = sl<SettingsStore>();
     await settingsStore.getTasks();
     super.didChangeDependencies();
   }

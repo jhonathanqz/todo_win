@@ -23,10 +23,11 @@ class ListCollections extends StatefulWidget {
 class _ListCollectionsState extends State<ListCollections> {
   late SettingsStore settingsStore;
   final _keyRefresh = GlobalKey<RefreshIndicatorState>();
+
   @override
-  void initState() {
+  void didChangeDependencies() {
     settingsStore = sl<SettingsStore>();
-    super.initState();
+    super.didChangeDependencies();
   }
 
   @override
@@ -118,8 +119,8 @@ class _ListCollectionsState extends State<ListCollections> {
     await settingsStore.deleteCollection(
       context: context,
       collectionId: collect.id,
-      callBackSucess: () {
-        settingsStore.deleteTaskFromCollection(context: context);
+      callBackSucess: () async {
+        await settingsStore.deleteTaskFromCollection(context: context);
       },
     );
   }
