@@ -70,7 +70,7 @@ class _HomePageState extends State<HomePage> {
           child: SizedBox(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Visibility(
                   visible: settingsStore.listCollection.isNotEmpty,
