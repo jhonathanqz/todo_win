@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.todo_win">
+    package="com.queiroz.todo_win">
    <application
         android:label="todo_win"
         android:icon="@mipmap/ic_launcher">
