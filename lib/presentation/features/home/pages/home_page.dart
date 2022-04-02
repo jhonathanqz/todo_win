@@ -85,7 +85,7 @@ class _HomePageState extends State<HomePage> {
       context: context,
       title: 'ToDoWin informa:',
       message:
-          'Para apagar uma lista ou uma tarefa, apenas deslize o card da direita para a esquerda.',
+          'Para apagar uma lista ou uma tarefa, apenas deslize o card da direita para a esquerda.\n\nFeito por: Jhonathan Queiroz',
       image: AppImages.info,
     );
   }

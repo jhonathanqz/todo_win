@@ -1,4 +1,4 @@
-package com.example.todo_win
+package com.queiroz.todo_win
 
 import io.flutter.embedding.android.FlutterActivity
 

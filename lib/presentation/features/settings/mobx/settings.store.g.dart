@@ -179,6 +179,21 @@ mixin _$SettingsStore on SettingsBase, Store {
     });
   }
 
+  final _$isDateRegisterAtom = Atom(name: 'SettingsBase.isDateRegister');
+
+  @override
+  bool get isDateRegister {
+    _$isDateRegisterAtom.reportRead();
+    return super.isDateRegister;
+  }
+
+  @override
+  set isDateRegister(bool value) {
+    _$isDateRegisterAtom.reportWrite(value, super.isDateRegister, () {
+      super.isDateRegister = value;
+    });
+  }
+
   final _$getTasksAsyncAction = AsyncAction('SettingsBase.getTasks');
 
   @override
@@ -278,6 +293,17 @@ mixin _$SettingsStore on SettingsBase, Store {
   }
 
   @override
+  void setDateRegister(bool value) {
+    final _$actionInfo = _$SettingsBaseActionController.startAction(
+        name: 'SettingsBase.setDateRegister');
+    try {
+      return super.setDateRegister(value);
+    } finally {
+      _$SettingsBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void isCompletedUpdate(bool value) {
     final _$actionInfo = _$SettingsBaseActionController.startAction(
         name: 'SettingsBase.isCompletedUpdate');
@@ -356,7 +382,8 @@ listTasks: ${listTasks},
 listTasksArchived: ${listTasksArchived},
 listTasksNotArchived: ${listTasksNotArchived},
 error: ${error},
-isArchiveList: ${isArchiveList}
+isArchiveList: ${isArchiveList},
+isDateRegister: ${isDateRegister}
     ''';
   }
 }

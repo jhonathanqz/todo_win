@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:mobx/mobx.dart';
 import 'package:todo_win/domain/entities/collection.dart';
 import 'package:todo_win/domain/entities/tasks.dart';
@@ -76,6 +77,14 @@ abstract class SettingsBase with Store {
   @action
   void setIsArchiveList(bool value) {
     isArchiveList = value;
+  }
+
+  @observable
+  bool isDateRegister = true;
+
+  @action
+  void setDateRegister(bool value) {
+    isDateRegister = value;
   }
 
   @action
@@ -327,6 +336,16 @@ abstract class SettingsBase with Store {
     required Function() callbackSucess,
   }) async {
     try {
+      if (isDateRegister) {
+        var date = DateTime.now();
+        var dateEdit = DateFormat('dd/MM/yyyy').format(date);
+        if (createCollectionName.trim() != '') {
+          setCollectionName(dateEdit + ' - ' + createCollectionName);
+        } else {
+          setCollectionName(dateEdit);
+        }
+
+      }
       if (createCollectionName.trim() == '') {
         InfoException.showInfoException(
           context: context,
@@ -343,6 +362,7 @@ abstract class SettingsBase with Store {
       );
 
       await getCollections();
+      setCollectionName('');
       isLoading = false;
       callbackSucess();
     } catch (e) {
