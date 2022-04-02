@@ -25,13 +25,13 @@ void setupDependencies() {
 }
 
 void setupProvider() {
-  sl.registerLazySingleton<SettingsProvider>(
+  sl.registerFactory<SettingsProvider>(
     () => SettingsProviderImpl(),
   );
 }
 
 void setupRepository() {
-  sl.registerLazySingleton<SettingsRepository>(
+  sl.registerFactory<SettingsRepository>(
     () => SettingsRepositoryImpl(
       settingsProvider: sl<SettingsProvider>(),
     ),
@@ -39,49 +39,49 @@ void setupRepository() {
 }
 
 void setupUseCase() {
-  sl.registerLazySingleton<GetTasksUseCase>(
+  sl.registerFactory<GetTasksUseCase>(
     () => GetTasksUseCase(
       settingsRepository: sl<SettingsRepository>(),
     ),
   );
 
-  sl.registerLazySingleton<SetTasksUseCase>(
+  sl.registerFactory<SetTasksUseCase>(
     () => SetTasksUseCase(
       settingsRepository: sl<SettingsRepository>(),
     ),
   );
 
-  sl.registerLazySingleton<UpdateTasksUseCase>(
+  sl.registerFactory<UpdateTasksUseCase>(
     () => UpdateTasksUseCase(
       settingsRepository: sl<SettingsRepository>(),
     ),
   );
 
-  sl.registerLazySingleton<DeleteTaskUseCase>(
+  sl.registerFactory<DeleteTaskUseCase>(
     () => DeleteTaskUseCase(
       settingsRepository: sl<SettingsRepository>(),
     ),
   );
 
-  sl.registerLazySingleton<DeleteTasksFromCollectionUseCase>(
+  sl.registerFactory<DeleteTasksFromCollectionUseCase>(
     () => DeleteTasksFromCollectionUseCase(
       settingsRepository: sl<SettingsRepository>(),
     ),
   );
 
-  sl.registerLazySingleton<DeleteCollectionUseCase>(
+  sl.registerFactory<DeleteCollectionUseCase>(
     () => DeleteCollectionUseCase(
       settingsRepository: sl<SettingsRepository>(),
     ),
   );
 
-  sl.registerLazySingleton<GetCollectionsUseCase>(
+  sl.registerFactory<GetCollectionsUseCase>(
     () => GetCollectionsUseCase(
       settingsRepository: sl<SettingsRepository>(),
     ),
   );
 
-  sl.registerLazySingleton<SetCollectionsUseCase>(
+  sl.registerFactory<SetCollectionsUseCase>(
     () => SetCollectionsUseCase(
       settingsRepository: sl<SettingsRepository>(),
     ),
