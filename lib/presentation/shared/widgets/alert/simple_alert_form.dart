@@ -86,6 +86,7 @@ class _SimpleFormAlertState extends State<SimpleFormAlert> {
                         labelStyle: AppTextStyles.labelStyle,
                         hintText: 'Digite aqui a descrição',
                       ),
+                      maxLines: 2,
                     ),
                   ),
                 ],

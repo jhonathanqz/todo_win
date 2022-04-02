@@ -80,7 +80,7 @@ abstract class SettingsBase with Store {
   }
 
   @observable
-  bool isDateRegister = true;
+  bool isDateRegister = false;
 
   @action
   void setDateRegister(bool value) {
@@ -261,7 +261,7 @@ abstract class SettingsBase with Store {
       if (listCollection.length > 1) {
         await getCollections();
       } else {
-        listCollection = [];
+        _wipeCollectionList();
       }
       isLoading = false;
       callBackSucess();
@@ -324,7 +324,7 @@ abstract class SettingsBase with Store {
       isLoading = false;
       return listCollection;
     } catch (e) {
-      listCollection = [];
+      _wipeCollectionList();
       isLoading = false;
       rethrow;
     }
@@ -344,7 +344,6 @@ abstract class SettingsBase with Store {
         } else {
           setCollectionName(dateEdit);
         }
-
       }
       if (createCollectionName.trim() == '') {
         InfoException.showInfoException(
@@ -386,5 +385,10 @@ abstract class SettingsBase with Store {
     listTasks = [];
     listTasksArchived = [];
     listTasksNotArchived = [];
+  }
+
+  @action
+  void _wipeCollectionList() {
+    listCollection = [];
   }
 }

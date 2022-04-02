@@ -26,10 +26,11 @@ class ListTasksArchived extends StatefulWidget {
 class _ListTasksArchivedState extends State<ListTasksArchived> {
   late SettingsStore settingsStore;
   final _keyRefresh = GlobalKey<RefreshIndicatorState>();
+
   @override
-  void initState() {
+  void didChangeDependencies() {
     settingsStore = sl<SettingsStore>();
-    super.initState();
+    super.didChangeDependencies();
   }
 
   @override
@@ -99,7 +100,7 @@ class _ListTasksArchivedState extends State<ListTasksArchived> {
                           ),
                           child: ListTile(
                             selected: task.isCompleted,
-                            selectedTileColor: Colors.green[200],
+                            selectedTileColor: Colors.grey[300],
                             tileColor: Colors.white,
                             title: Text(
                               task.description.capitalizeFirstOfEach,

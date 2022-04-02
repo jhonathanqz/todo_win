@@ -370,6 +370,17 @@ mixin _$SettingsStore on SettingsBase, Store {
   }
 
   @override
+  void _wipeCollectionList() {
+    final _$actionInfo = _$SettingsBaseActionController.startAction(
+        name: 'SettingsBase._wipeCollectionList');
+    try {
+      return super._wipeCollectionList();
+    } finally {
+      _$SettingsBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 isLoading: ${isLoading},

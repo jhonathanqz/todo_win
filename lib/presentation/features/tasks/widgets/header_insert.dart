@@ -22,9 +22,14 @@ class _HeaderInsertState extends State<HeaderInsert> {
 
   @override
   void initState() {
-    settingsStore = sl<SettingsStore>();
     inputController = TextEditingController();
     super.initState();
+  }
+
+  @override
+  void didChangeDependencies() {
+    settingsStore = sl<SettingsStore>();
+    super.didChangeDependencies();
   }
 
   @override
@@ -55,15 +60,15 @@ class _HeaderInsertState extends State<HeaderInsert> {
                     suffixIcon: InkWell(
                       child: Container(
                         decoration: AppInputBorder.borderRadius.copyWith(
-                          //color: AppColors.primaryColor,
-                          gradient: const LinearGradient(
-                            begin: Alignment.topRight,
-                            end: Alignment.bottomLeft,
-                            colors: [
-                              Colors.blue,
-                              Colors.green,
-                            ],
-                          ),
+                          color: AppColors.primaryColor,
+                          //gradient: LinearGradient(
+                          //  begin: Alignment.topRight,
+                          //  end: Alignment.bottomLeft,
+                          //  colors: [
+                          //    Colors.green[800]!,
+                          //    Colors.greenAccent[400]!,
+                          //  ],
+                          //),
                         ),
                         child: const Icon(
                           Icons.add,

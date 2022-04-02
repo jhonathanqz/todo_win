@@ -9,7 +9,6 @@ import 'package:todo_win/presentation/shared/style/app_input_border.dart';
 import 'package:todo_win/presentation/shared/style/app_text_styles.dart';
 import 'package:todo_win/utils/cool_navigate.dart';
 import 'package:todo_win/utils/info_exception.dart';
-import 'package:intl/intl.dart';
 
 class AlertCollection extends StatefulWidget {
   const AlertCollection({
@@ -74,7 +73,9 @@ class _AlertCollectionState extends State<AlertCollection> {
                   CheckboxListTile(
                     value: settingsStore.isDateRegister,
                     onChanged: (value) => settingsStore.setDateRegister(value!),
-                    title: Text('Registrar data'),
+                    title: const Text(
+                      'Registrar data',
+                    ),
                   ),
                   Container(
                     padding: AppEdgeInsets.tsd,
@@ -107,7 +108,6 @@ class _AlertCollectionState extends State<AlertCollection> {
               visible: !settingsStore.isLoading,
               child: InkWell(
                 onTap: () {
-                  print('**isDate: ${settingsStore.isDateRegister}');
                   coolNavigate.goBack();
                 },
                 child: Container(
