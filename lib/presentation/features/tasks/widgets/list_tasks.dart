@@ -27,10 +27,11 @@ class ListTasks extends StatefulWidget {
 class _ListTasksState extends State<ListTasks> {
   late SettingsStore settingsStore;
   final _keyRefresh = GlobalKey<RefreshIndicatorState>();
+
   @override
-  void initState() {
+  void didChangeDependencies() {
     settingsStore = sl<SettingsStore>();
-    super.initState();
+    super.didChangeDependencies();
   }
 
   @override
@@ -100,7 +101,7 @@ class _ListTasksState extends State<ListTasks> {
                           ),
                           child: ListTile(
                             selected: task.isCompleted,
-                            selectedTileColor: Colors.green[200],
+                            selectedTileColor: Colors.grey[300],
                             tileColor: Colors.white,
                             title: Text(
                               task.description.capitalizeFirstOfEach,
@@ -116,7 +117,12 @@ class _ListTasksState extends State<ListTasks> {
                               onChanged: (v) async => _completeTask(v!, task),
                             ),
                             trailing: IconButton(
-                              icon: const Icon(Icons.edit),
+                              icon: Icon(
+                                Icons.edit,
+                                color: task.isCompleted
+                                    ? Colors.grey[800]
+                                    : Colors.grey,
+                              ),
                               onPressed: () {
                                 settingsStore.selectedTasks = task;
                                 DialogHelper.open(
