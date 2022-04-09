@@ -1,11 +1,5 @@
 name: CI
-on:
-  push:
-    branches: [master, all]
-  pull_request:
-    branches: [master, all]
-
-  workflow_dispatch:
+on: push
 
 jobs:
   analyze:
