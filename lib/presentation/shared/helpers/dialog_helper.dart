@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class DialogHelper {
@@ -5,11 +8,18 @@ class DialogHelper {
     required BuildContext context,
     required Widget content,
     bool barrierDismissible = false,
-  }) {
-    showDialog(
-      context: context,
-      barrierDismissible: barrierDismissible,
-      builder: (context) => content,
-    );
+  }) async {
+    if (Platform.isAndroid) {
+      return showDialog(
+        context: context,
+        barrierDismissible: barrierDismissible,
+        builder: (context) => content,
+      );
+    } else {
+      return showCupertinoDialog(
+        context: context,
+        builder: (context) => content,
+      );
+    }
   }
 }
